@@ -3,19 +3,10 @@ const morgan = require('morgan')
 const mysql = require('mysql')
 const bodyParser = require('body-parser')
 const app = express()
-const keepalive = require('express-glitch-keepalive');
 app.use(morgan('short'))
 app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({extended: false}))
 // ------------------------------------------------------------------------------------------------------------------------------------------------ //
-app.use(keepalive);
-app.get('/', (req, res) => {
-res.json('Online');
-});
-app.get("/", (request, response) => {
-response.sendStatus(200);
-});
-app.listen(process.env.PORT);
 
 const connection =  mysql.createConnection({
         host: 'remotemysql.com',
